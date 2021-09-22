@@ -1,0 +1,12 @@
+/*Header*/
+
+h1{
+    margin: 20px;
+    margin-bottom: 40px;
+    font-size: 60px;
+}
+
+/*Cards*/
+.card{
+    margin-bottom: 40px;
+}

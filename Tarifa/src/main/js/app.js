@@ -27,20 +27,19 @@ async function listProducts() {
         const row = document.createElement('card');
 
         row.innerHTML += `
-            <div class="row">
-                <div class="col">
-                    <div class="card">
+            <div class="col-sm-6">
+                <div class="card">
                     <div class="card-body">
-                    <h5 class="card-title">
+                        <h5 class="card-title">
                         <p class="card-text"> ${price} </p>
                         <p class="card-text"> ${name} </p>
                         <p class="card-text"> ${description} </p>
                         <input type="submit" value="Prueba">
                     </div>
-                    </div>
                 </div>
             </div>
-            `;
+        </div>
+        `;
 
         listado.appendChild(row);
     })

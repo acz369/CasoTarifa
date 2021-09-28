@@ -4,11 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/src/main/css/style.css">
     <title>CASO TARIFA</title>
 </head>
-<body>
+<body>  
+    <div class="container">
+      <div class="navbar-header">
+        <h1 class="navbar-title">Caso tarifa</h1>
+      </div>
+      <form id="form">
+        <div class="flex flex-col">
+          <div class="py-2 overflow-x-auto">
+            <div class="align-middle inline-block min-w-full shadow overflow-hidden border-b border-gray-200">
+              <table class="min-w-full card">
+                <thead class="bg-gray-100 ">
+                    <tr class="products">
+                        <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 tracking-wider">
+                                Cost
+                        </th>
+                        <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 tracking-wider">
+                                Name
+                        </th>
+                        <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 tracking-wider">
+                                Description
+                        </th>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 add">
+                          <a href="#" class=""></a>
+                      </td>
+                    </tr>
+                </thead>
+                <tbody id="product-list" class="bg-white"></tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="id-client" style="display:none">
+        <input type="number" id="id" name="id" placeholder= "Ingrese su Id" required>
+        <input type="button" id="calculate" value="Calculate">
+      </form>
+      <div class="info-purchase">
+          <h3 class="card-title">Purchase information</h5>
+          <p class="card-text">Final price:</p>
+      </div>
+    </div>
 
-    <script src="../main/js/index.js"></script>
+  <script src="../main/js/app.js"></script>
 </body>
 </html>

@@ -17,26 +17,20 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text"><f/p>
-                <input type="submit" value="Prueba">
-              </div>
             </div>
           </div>
         </div>
       </form>
 
-      <form class="form">
-        <input type="text" name="id" placeholder="id" required>
-        <br>
-        <input type="submit" value="CalcularTarifa">
-        <input type="hidden" name="id">
+
+      <form class="id-client" style="display:none">
+        <input type="text" id="id" name="id" placeholder="id" required>
+        <input type="button" id="calculate"value="Calculate">
       </form>
 
-      <div class="info-compra">
-          <h3 class="card-title">Información de la compra</h5>
-          <p class="card-text">Tarifa final:</p>
+      <div class="info-purchase">
+          <h3 class="card-title">Purchase information</h5>
+          <p class="card-text">Final price:</p>
       </div>
     </div>
   

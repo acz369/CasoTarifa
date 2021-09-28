@@ -1,16 +1,16 @@
+const url = "http://localhost:3000/api";
 const app = document.querySelector('.container')
-const cardProducts = document.querySelector('#form');
-const btnAdd = cardProducts.querySelector('a');
+const cardProducts = document.querySelector('.card');
 const idClient = document.querySelector('.id-client');
 const infoPurchase = document.querySelector('.info-purchase');
 const btnCalculate = document.querySelector('#calculate');
-const url = "http://localhost:3000/api";
 const listado = document.querySelector('#product-list');
-let infoProduct;
+const btnAdd = document.querySelector('tbody');
+let productSelect;
 
 document.addEventListener('readystatechange', () => {
-    document.addEventListener('DOMContentLoaded', listProducts);
-    cardProducts.addEventListener('click', addProduct);
+    document.addEventListener('DOMContentLoaded', listProducts);    
+    productSelect = btnAdd.addEventListener('click', addProduct);
     btnCalculate.addEventListener('click', calculateRate);
 })
 
@@ -52,7 +52,8 @@ async function listProducts() {
         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">    
             <p class="text-sm leading-10 text-gray-700" id="description">${description}</p>
         </td>
-        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5"><a href="#" class="u-full-width button-primary button input" data-id="4">Add</a>
+        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5">
+            <a href="#" class="add" >Add</a>
         </td>
         `;
 
@@ -60,45 +61,50 @@ async function listProducts() {
     })
 }
 
-function addProduct() {
+function addProduct(e) {
+    var fila = e.target.parentNode;
+    var filaP = fila.parentNode;
     const infoProduct = {
-        price: cardProducts.querySelector('#price').textContent,
-        name: cardProducts.querySelector('#name').textContent,
-        description: cardProducts.querySelector('#description').textContent
+        price: filaP.children[0].textContent.trim(),
+        name: filaP.children[1].textContent.trim(),
+        description: filaP.children[2].textContent.trim()
     }
+    productSelect = infoProduct;
     idClient.style.display = 'block'
     return infoProduct
 }
 
-async function calculateRate(e) {
-    e.preventDefault();
-    const productSelected = addProduct()
-    console.log(productSelected.price);
-    let finalPrice = productSelected.price;
+async function calculateRate() {
+    let finalPrice = productSelect.price;
     const idClientSelect = document.querySelector('#id').value;
     const clients = await getClients();
     const clientSelect = clients.find(client => client.id == idClientSelect)
-    console.log(productSelected);
-    if (clientSelect.discount === 'yes' || clientSelect.discount === 'Yes') {
-        finalPrice -= productSelected.price * 0.10
-    }
-    const row = document.createElement('card');
-    row.innerHTML += `
+    if (idClientSelect === '' || clientSelect === undefined) {
+        alert("The field ID is invalid")
+    } else {
+        if (clientSelect.discount === 'yes' || clientSelect.discount === 'Yes') {
+            finalPrice -= productSelect.price * 0.10
+        }
+        const row = document.createElement('card');
+        row.innerHTML += `
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">
                         <p class="card-text" id="price"> ${finalPrice} </p>
-                        <p class="card-text" id="name"> ${productSelected.name} </p>
+                        <p class="card-text" id="name"> ${productSelect.name} </p>
                     </div>
                 </div>
             </div>
         </div>
         `;
-    infoPurchase.appendChild(row);
-    setTimeout(() => {
-        row.remove();
-    }, 2000);
+        infoPurchase.appendChild(row);
+        setTimeout(() => {
+            row.remove();
+        }, 2000);
+    }
+
+
 
 }
 

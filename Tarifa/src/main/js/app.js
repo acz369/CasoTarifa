@@ -5,7 +5,7 @@ const idClient = document.querySelector('.id-client');
 const infoPurchase = document.querySelector('.info-purchase');
 const btnCalculate = document.querySelector('#calculate');
 const url = "http://localhost:3000/api";
-const listado = document.querySelector('.card');
+const listado = document.querySelector('#product-list');
 let infoProduct;
 
 document.addEventListener('readystatechange', () => {
@@ -40,21 +40,20 @@ async function listProducts() {
 
     products.forEach(product => {
         const { price, name, description } = product;
-        const row = document.createElement('card');
+        const row = document.createElement('tr');
 
         row.innerHTML += `
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                        <p class="card-text" id="price"> ${price} </p>
-                        <p class="card-text" id="name"> ${name} </p>
-                        <p class="card-text" id="description"> ${description} </p>
-                        <a href="#" class="u-full-width button-primary button input" data-id="4">Add</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+            <p class="text-sm leading-10 text-gray-700" id="price"> ${price} </p>
+        </td>
+        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+            <p class="text-sm leading-10 text-gray-700" id="name">${name}</p>
+        </td>
+        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">    
+            <p class="text-sm leading-10 text-gray-700" id="description">${description}</p>
+        </td>
+        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5"><a href="#" class="u-full-width button-primary button input" data-id="4">Add</a>
+        </td>
         `;
 
         listado.appendChild(row);

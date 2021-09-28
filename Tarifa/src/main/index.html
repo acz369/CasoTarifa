@@ -14,26 +14,38 @@
         <h1 class="navbar-title">Caso tarifa</h1>
       </div>
       <form id="form">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="card" style="width: 18rem;">
+        <div class="flex flex-col">
+          <div class="py-2 overflow-x-auto">
+            <div class="align-middle inline-block min-w-full shadow overflow-hidden border-b border-gray-200">
+              <table class="min-w-full card">
+                <thead class="bg-gray-100 ">
+                    <tr>
+                        <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                Cost
+                        </th>
+                        <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                Name
+                        </th>
+                        <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                Description
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="product-list" class="bg-white"></tbody>
+                </table>
             </div>
           </div>
         </div>
       </form>
-
-
       <form class="id-client" style="display:none">
-        <input type="text" id="id" name="id" placeholder="id" required>
-        <input type="button" id="calculate"value="Calculate">
+        <input type="number" id="id" name="id" placeholder= "Ingrese su Id" required>
+        <input type="button" id="calculate" value="Calculate">
       </form>
-
       <div class="info-purchase">
           <h3 class="card-title">Purchase information</h5>
           <p class="card-text">Final price:</p>
       </div>
     </div>
-  
 
   <script src="../main/js/app.js"></script>
 </body>
